@@ -2,15 +2,10 @@ let arr = process.argv.slice(2);
 let output = "";
 let string = ""
 for(let i=0; i<arr.length; i++){
-    num = arr[i];
-    num = parseInt(num);
-
-    while(num >= 1){
-
-        last_digit = num%10;
-        num = (num/10)-(last_digit/10);
-        string=translator(last_digit)+string;
-
+    num = arr[i].split("");
+    for(let j=0; j<num.length; j++){
+        last_digit = parseInt(num[j]);
+        string+=translator(last_digit);
     }
     output = output +","+ string;
     string = "";
@@ -38,6 +33,7 @@ switch (digit) {
         return "Eight";
     case 9:
         return "Nine";
-    
+    default:
+        return "Error, your input is not recognized. You can only enter positive integers and 0 .";
     }
 }
